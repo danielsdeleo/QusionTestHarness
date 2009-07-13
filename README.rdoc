@@ -1,2 +1,5 @@
 = Qusion Test Harness
 This is just a simple rails app that I use to test Qusion[http://github.com/danielsdeleo/qusion] with Thin, Mongrel and Phusion Passenger. It doesn't use a database, and has only one controller with one action. All it actually does is create a random number and publish it as a hex string to a queue named "qusion" and then show the number in the generated page.
+
+= Using Qusion Test Harness
+This app is probably pretty useless unless you're hacking on Qusion. If you want to use it, you need to put a copy of Qusion in vendor/gems/qusion. Now you can run the app, beat it up with ab, whatever.
