@@ -69,7 +69,8 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
   
   require "#{RAILS_ROOT}/vendor/gems/qusion/lib/qusion"
-  AMQP.start_web_dispatcher(:host => "localhost")
+  Qusion.start
+  #AMQP.start_web_dispatcher(:host => "localhost")
   
 end
 
