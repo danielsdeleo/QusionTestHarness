@@ -6,4 +6,8 @@ class HomeController < ApplicationController
     queue.publish(@random_string)
   end
   
+  def rock
+    Working.async_rock_out("GUITAR SOLO!!!")
+  end
+  
 end

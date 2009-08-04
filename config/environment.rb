@@ -67,10 +67,14 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
-  
-  require "#{RAILS_ROOT}/vendor/gems/qusion/lib/qusion"
-  Qusion.start
-  #AMQP.start_web_dispatcher(:host => "localhost")
+  config.after_initialize do
+    require "#{RAILS_ROOT}/vendor/gems/qusion/lib/qusion"
+    #AMQP.start_web_dispatcher(:host => "localhost")
+    Qusion.start
+    Workling::Remote.invoker           = Workling::Remote::Invokers::EventmachineSubscriber
+    Workling::Remote.dispatcher        = Workling::Remote::Runners::ClientRunner.new
+    Workling::Remote.dispatcher.client = Workling::Clients::AmqpClient.new
+  end
   
 end
 
